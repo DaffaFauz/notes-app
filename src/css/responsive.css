@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px) {
+  note-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card {
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  form-add {
+    width: 200px;
+  }
+  note-list {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    display: grid;
+    margin: 10px;
+  }
+}

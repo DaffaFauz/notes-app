@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "header header header header"
+    "form form form form"
+    "content content content content"
+    "footer footer footer footer";
+  gap: 20px;
+}
+
+header {
+  grid-area: header;
+  padding: 20px;
+  background-color: #b7c9f2;
+}
+
+app-bar {
+  color: white;
+}
+
+main {
+  grid-area: content;
+}
+
+form-add {
+  grid-area: form;
+  justify-self: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 32%;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+textarea {
+  padding: 10px;
+  font-size: 0.8rem;
+  resize: vertical;
+}
+
+input:user-invalid,
+textarea:user-invalid {
+  border: 2px solid red;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #6895d2;
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #3468c0;
+}
+footer-bar {
+  grid-area: footer;
+  padding: 20px;
+  background-color: #b7c9f2;
+  color: white;
+  text-align: center;
+  font-weight: 100;
+}
+
+note-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  margin: 0 10px;
+  gap: 15px;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 250px;
+  display: grid;
+
+  transition: all 150ms ease-in;
+}
+
+.card:hover {
+  scale: 1.03;
+  box-shadow: 0 2px 4px 2px #33333377;
+}
+
+.card-title {
+  margin: 10px;
+}
+
+.card-body {
+  margin: 0 10px 10px 10px;
+}
+
+.card-footer {
+  margin-top: auto;
+  border-top: 1px solid black;
+}
+
+.card-footer > p {
+  padding: 10px;
+  font-size: small;
+  color: #b4b4b8;
+}
