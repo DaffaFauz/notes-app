@@ -1,7 +1,8 @@
 import "./component/app-bar.js";
 import "./component/form.js";
-// import "./component/note-list.js";
+import "./component/note-list.js";
 import "./component/footer-bar.js";
+import "./component/card-component.js"
 import Notes from "./data/notes.js";
 
 const listElement = document.querySelector("note-list");
@@ -14,23 +15,35 @@ const showNote = () => {
 };
 
 const displayResult = (notes) => {
-  const noteItems = notes.map((note) => {
-    return `
-        <div class="card">
-            <div class="card-title">
-              <h2>${note.title}</h2>
-            </div>
-            <div class="card-body">
-              <p>${note.body}</p>
-            </div>
-            <div class="card-footer">
-            <p>${note.createdAt}</p>
-          </div>
-        </div>
-      `;
+  listElement.innerHTML = ""; // Kosongkan kontainer sebelum menambahkan komponen card
+
+  console.log({notes})
+  notes.forEach((note) => {
+    const cardElement = document.createElement("card-component");
+    console.log({cardElement})
+    cardElement.note = note;
+    listElement.appendChild(cardElement);
   });
-  listElement.innerHTML = noteItems.join("");
-};
+}
+
+// const displayResult = (notes) => {
+//   const noteItems = notes.map((note) => {
+//     return `
+//         <div class="card">
+//             <div class="card-title">
+//               <h2>${note.title}</h2>
+//             </div>
+//             <div class="card-body">
+//               <p>${note.body}</p>
+//             </div>
+//             <div class="card-footer">
+//             <p>${note.createdAt}</p>
+//           </div>
+//         </div>
+//       `;
+//   });
+//   listElement.innerHTML = noteItems.join("");
+// };
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
