@@ -58,15 +58,16 @@ document.querySelector("form").addEventListener("submit", (event) => {
   let body = document.querySelector("textarea");
 
   if (bodyForm) {
-    body.value;
+    body = body.value;
     if (!title){
       title = body.split(" ").slice(0, 2).join(", ").replace(/,/g, " ");
-    }
+    };
     Notes.add({ id, title, body, archived: false });
     showNote();
     document.querySelector("form").reset();
+  } else {
+    document.querySelector('label[for="konten"] .input-requirements li:nth-child(1)')
   }
-
 });
 
 showNote();

@@ -12,7 +12,7 @@ class Form extends HTMLElement {
             class="judul"
             placeholder="Masukkan Judul"
           />
-          <label for="">Konten</label>
+          <label for="konten">Konten</label>
           <textarea
             name=""
             id="konten"
@@ -23,6 +23,10 @@ class Form extends HTMLElement {
             required
             oninvalid="this.setCustomValidity('Form ini harus diisi !!!')"
           ></textarea>
+          <ul class="input-requirements">
+                <li>At least 3 characters long</li>
+                <li>Must only contain letters and numbers (no special characters)</li>
+          </ul>   
         </div>
         <button caption="Tambah"></button>
       </form>`;
