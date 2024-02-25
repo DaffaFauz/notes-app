@@ -1,6 +1,6 @@
 import "./component/app-bar.js";
 import "./component/form.js";
-import "./component/note-list.js";
+// import "./component/note-list.js";
 import "./component/footer-bar.js";
 import Notes from "./data/notes.js";
 
@@ -34,17 +34,26 @@ const displayResult = (notes) => {
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
-  const id =
-    "notes-" +
-    Math.random().toString().substr(2, 4) +
-    "-" +
-    Math.random().toString(36).substr(2, 4);
-  const title = document.querySelector("input").value;
-  const body = document.querySelector("textarea").value;
 
-  Notes.add({ id, title, body, archived: false });
-  showNote();
-  document.querySelector("form").reset();
+  const bodyForm = document.getElementById("konten").value;
+  const id =
+      "notes-" +
+      Math.random().toString().substr(2, 4) +
+      "-" +
+      Math.random().toString(36).substr(2, 4);
+  let title = document.querySelector("input").value;
+  let body = document.querySelector("textarea");
+
+  if (bodyForm) {
+    body.value;
+    if (!title){
+      title = body.split(" ").slice(0, 2).join(", ").replace(/,/g, " ");
+    }
+    Notes.add({ id, title, body, archived: false });
+    showNote();
+    document.querySelector("form").reset();
+  }
+
 });
 
 showNote();
