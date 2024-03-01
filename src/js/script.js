@@ -3,6 +3,7 @@ import "./component/form.js";
 import "./component/note-list.js";
 import "./component/note-item.js";
 import "./component/footer-bar.js";
+import "./component/card-component.js";
 import Notes from "./data/notes.js";
 
 const listElement = document.querySelector("note-list");
@@ -25,6 +26,8 @@ const displayResult = (notes) => {
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
+
+  const bodyForm = document.getElementById("konten").value;
   const id =
     "notes-" +
     Math.random().toString().substr(2, 4) +

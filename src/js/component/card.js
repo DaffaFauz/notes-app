@@ -1,7 +1,9 @@
-class Form extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = ` 
+class Card extends HTMLElement {
+    constructor() {
+        super();
+        const body = document.getElementById('konten');
+
+        this.innerHTML = ` 
     <form>
         <div class="form-group">
           <label for="">Judul</label>
@@ -12,23 +14,21 @@ class Form extends HTMLElement {
             class="judul"
             placeholder="Masukkan Judul"
           />
-          <label for="konten">Konten</label>
+          <label for="">Konten</label>
           <textarea
             name=""
             id="konten"
             class="konten"
             rows="5"
             maxlength="150"
-            aria-describedby="pesan-error"
             required
-            oninvalid="this.setCustomValidity('Form ini harus diisi !!!')"
+            aria-describedby="pesan-error"
           ></textarea>
-          <span id="pesan-error"></span>
         </div>
         <button caption="Tambah"></button>
       </form>`;
-  }
+    }
 }
 
-customElements.define("form-add", Form);
-export default Form;
+customElements.define("form-add", Card);
+export default Card;
