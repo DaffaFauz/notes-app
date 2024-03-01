@@ -1,6 +1,7 @@
 import "./component/app-bar.js";
 import "./component/form.js";
 import "./component/note-list.js";
+import "./component/note-item.js";
 import "./component/footer-bar.js";
 import Notes from "./data/notes.js";
 
@@ -14,22 +15,12 @@ const showNote = () => {
 };
 
 const displayResult = (notes) => {
-  const noteItems = notes.map((note) => {
-    return `
-        <div class="card">
-            <div class="card-title">
-              <h2>${note.title}</h2>
-            </div>
-            <div class="card-body">
-              <p>${note.body}</p>
-            </div>
-            <div class="card-footer">
-            <p>${note.createdAt}</p>
-          </div>
-        </div>
-      `;
+  listElement.innerHTML = "";
+  notes.forEach((note) => {
+    const noteItem = document.createElement("note-item");
+    noteItem.note = note;
+    listElement.appendChild(noteItem);
   });
-  listElement.innerHTML = noteItems.join("");
 };
 
 document.querySelector("form").addEventListener("submit", (event) => {
@@ -39,12 +30,27 @@ document.querySelector("form").addEventListener("submit", (event) => {
     Math.random().toString().substr(2, 4) +
     "-" +
     Math.random().toString(36).substr(2, 4);
-  const title = document.querySelector("input").value;
-  const body = document.querySelector("textarea").value;
 
-  Notes.add({ id, title, body, archived: false });
-  showNote();
-  document.querySelector("form").reset();
+  const textArea = document.querySelector("textarea");
+
+  let title = document.querySelector(".judul").value;
+  let body = document.querySelector("#konten").value;
+  if (textArea) {
+    if (!title) {
+      title = body.split(" ").slice(0, 2).join(", ").replace(/,/g, " ");
+    }
+    Notes.add({ id, title, body, archived: false });
+    showNote();
+    document.querySelector("form").reset();
+  }
+});
+
+document.querySelector("#konten").addEventListener("invalid", () => {
+  document.querySelector("#konten").setCustomValidity("Tolong isikan sesuatu!");
+
+  document.querySelector("#pesan-error").textContent = "Konten wajib diisi.";
+  document.querySelector("#pesan-error").style.color = "red";
+  return;
 });
 
 showNote();

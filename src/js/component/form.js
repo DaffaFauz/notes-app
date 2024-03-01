@@ -22,6 +22,7 @@ class Form extends HTMLElement {
             required
             aria-describedby="pesan-error"
           ></textarea>
+          <span id="pesan-error"></span>
         </div>
         <button caption="Tambah"></button>
       </form>`;
